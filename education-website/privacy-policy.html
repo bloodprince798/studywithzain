@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Student Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(52, 152, 219, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(52, 152, 219, 0.8); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes legalStamp {
+            0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideInDown 0.5s ease;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            animation: slideInLeft 0.8s ease;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 2.2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            animation: slideInRight 0.8s ease;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: var(--primary-color);
+            padding: 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            background: #2980b9;
+            transform: rotate(90deg);
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: calc(100vh - 160px);
+        }
+
+        .privacy-section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%233498db" opacity="0.03" d="M0,500L48,528C96,556,192,612,288,628C384,644,480,620,576,580C672,540,768,484,864,470C960,456,1056,484,1152,492C1248,500,1344,488,1392,482L1440,476L1440,1000L1392,1000C1344,1000,1248,1000,1152,1000C1056,1000,960,1000,864,1000C768,1000,672,1000,576,1000C480,1000,384,1000,288,1000C192,1000,96,1000,48,1000L0,1000Z"></path></svg>');
+            background-size: cover;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .page-heading {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+            text-align: center;
+            animation: fadeIn 1s ease, pulse 2s infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .page-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            border-radius: 3px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .policy-date {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            animation: fadeIn 1.2s ease 0.3s both;
+            font-style: italic;
+        }
+
+        .policy-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .policy-text {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #444;
+            animation: fadeIn 1.4s ease 0.5s both;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .policy-text:hover::before {
+            left: 100%;
+        }
+
+        .policy-text:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .policy-text p {
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .policy-text p:nth-child(1) { animation-delay: 0.6s; }
+        .policy-text p:nth-child(2) { animation-delay: 0.8s; }
+        .policy-text p:nth-child(3) { animation-delay: 1.0s; }
+        .policy-text p:nth-child(4) { animation-delay: 1.2s; }
+        .policy-text p:nth-child(5) { animation-delay: 1.4s; }
+        .policy-text p:nth-child(6) { animation-delay: 1.6s; }
+        .policy-text p:nth-child(7) { animation-delay: 1.8s; }
+
+        .policy-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .policy-box {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            animation: bounce 3s infinite;
+        }
+
+        .policy-box:nth-child(1) { animation-delay: 0.2s; }
+        .policy-box:nth-child(2) { animation-delay: 0.4s; }
+        .policy-box:nth-child(3) { animation-delay: 0.6s; }
+
+        .policy-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .policy-box:hover::before {
+            left: 100%;
+        }
+
+        .policy-box:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(52, 152, 219, 0.3);
+            animation: none;
+        }
+
+        .policy-box:nth-child(1):hover { border-top: 5px solid #3498db; }
+        .policy-box:nth-child(2):hover { border-top: 5px solid #e74c3c; }
+        .policy-box:nth-child(3):hover { border-top: 5px solid #27ae60; }
+
+        .policy-icon {
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .policy-box:hover .policy-icon {
+            transform: scale(1.2) rotate(360deg);
+            animation: none;
+        }
+
+        .policy-box:nth-child(1) .policy-icon { color: #3498db; }
+        .policy-box:nth-child(2) .policy-icon { color: #e74c3c; }
+        .policy-box:nth-child(3) .policy-icon { color: #27ae60; }
+
+        .policy-box h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .policy-box:hover h3 {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .policy-box p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .policy-note {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(241, 196, 15, 0.1));
+            border-left: 5px solid var(--warning-color);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            animation: fadeIn 1.6s ease 0.8s both;
+            transition: var(--transition);
+        }
+
+        .policy-note:hover {
+            transform: translateX(15px);
+            box-shadow: 0 15px 35px rgba(243, 156, 18, 0.2);
+        }
+
+        .note-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--warning-color), #f1c40f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+            animation: bounce 2s infinite;
+        }
+
+        .policy-note p {
+            color: #d35400;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .policy-note strong {
+            color: #e67e22;
+        }
+
+        /* Legal Stamp Animation */
+        .legal-stamp {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(231, 76, 60, 0.1);
+            border: 5px dashed var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: legalStamp 1s ease 2s forwards;
+            transform-origin: center;
+        }
+
+        .stamp-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            transform: rotate(-15deg);
+        }
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            background: linear-gradient(135deg, var(--secondary-color), #1a2530);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            display: none;
+            animation: slideInUp 0.8s ease;
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        .cookie-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .cookie-text {
+            flex: 1;
+        }
+
+        .cookie-text h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .cookie-text p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .cookie-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cookie-accept {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .cookie-decline {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cookie-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color), var(--accent-color));
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease;
+        }
+
+        .footer-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-info a {
+            color: var(--primary-color);
+            transition: var(--transition);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .footer-info a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-info a:hover {
+            color: white;
+        }
+
+        .footer-info a:hover::after {
+            width: 100%;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-social a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social a:hover::before {
+            transform: scale(1);
+        }
+
+        .footer-social a i {
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover i {
+            transform: rotate(360deg) scale(1.2);
+            color: white;
+        }
+
+        .footer-social a:nth-child(1):hover::before { background: #4267B2; }
+        .footer-social a:nth-child(2):hover::before { background: #1DA1F2; }
+        .footer-social a:nth-child(3):hover::before { background: #FF0000; }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-heading {
+                font-size: 3rem;
+            }
+            
+            .policy-text {
+                padding: 50px 40px;
+                font-size: 1.1rem;
+            }
+            
+            .policy-box {
+                padding: 35px 25px;
+            }
+            
+            .policy-icon {
+                font-size: 4rem;
+            }
+            
+            .legal-stamp {
+                width: 120px;
+                height: 120px;
+                top: 30px;
+                right: 30px;
+            }
+            
+            .stamp-text {
+                font-size: 1.2rem;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                padding: 30px 0;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                border-top: 2px solid var(--primary-color);
+            }
+
+            .nav-menu.active {
+                left: 0;
+                animation: slideInRight 0.5s ease;
+            }
+
+            .nav-link {
+                padding: 20px;
+                justify-content: center;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .page-heading {
+                font-size: 2.5rem;
+            }
+
+            .policy-text {
+                padding: 40px 30px;
+            }
+
+            .policy-sections {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .policy-note {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .legal-stamp {
+                display: none;
+            }
+
+            .cookie-banner {
+                bottom: 20px;
+                width: 95%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .main-content {
+                padding-top: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-heading {
+                font-size: 2.2rem;
+            }
+
+            .policy-text {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+
+            .policy-date {
+                font-size: 1rem;
+            }
+
+            .policy-icon {
+                font-size: 3.5rem;
+            }
+
+            .policy-box h3 {
+                font-size: 1.6rem;
+            }
+
+            .note-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .policy-note p {
+                font-size: 1rem;
+            }
+
+            .cookie-banner {
+                padding: 20px;
+            }
+
+            .cookie-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo i {
+                font-size: 1.8rem;
+            }
+
+            .footer-info p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3><i class="fas fa-cookie-bite"></i> Cookie Consent</h3>
+                <p>This website uses cookies to enhance your browsing experience. By continuing to use this site, you consent to our use of cookies as described in our Privacy Policy.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" id="acceptCookies">
+                    <i class="fas fa-check"></i> Accept All
+                </button>
+                <button class="cookie-btn cookie-decline" id="declineCookies">
+                    <i class="fas fa-times"></i> Decline
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>StudentGuide</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="contact.html" class="nav-link"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+                
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Content -->
+    <main class="main-content">
+        <section class="privacy-section">
+            <div class="container">
+                <!-- Legal Stamp -->
+                <div class="legal-stamp">
+                    <div class="stamp-text">LEGAL</div>
+                </div>
+                
+                <h1 class="page-heading animate__animated animate__fadeInDown">Privacy Policy</h1>
+                <p class="policy-date scroll-reveal">Last Updated: January 2026</p>
+                
+                <div class="policy-content">
+                    <div class="policy-text scroll-reveal">
+                        <p>This Privacy Policy describes how we collect, use, and protect user information on our website.</p>
+                        
+                        <p>We do not collect personal data unless voluntarily provided by the user through contact methods. Any information shared is used only for communication purposes.</p>
+                        
+                        <p>This website uses Google AdSense, a third-party advertising service. Google may use cookies, including the DoubleClick cookie, to display ads relevant to users based on their visits to this and other websites.</p>
+                        
+                        <p>Users may opt out of personalized advertising by visiting Google Ads Settings.</p>
+                        
+                        <p>We have no control over third-party cookies used by advertisers.</p>
+                        
+                        <p>By using our website, you consent to this Privacy Policy and agree to its terms.</p>
+                        
+                        <p>We reserve the right to update this policy at any time.</p>
+                    </div>
+                    
+                    <div class="policy-sections">
+                        <div class="policy-box scroll-reveal">
+                            <div class="policy-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Data Protection</h3>
+                            <p>We prioritize the security of user information and implement appropriate measures to protect it.</p>
+                        </div>
+                        
+                        <div class="policy-box scroll-reveal">
+                            <div class="policy-icon">
+                                <i class="fas fa-cookie-bite"></i>
+                            </div>
+                            <h3>Cookies Policy</h3>
+                            <p>Cookies may be used to enhance user experience and for advertising purposes.</p>
+                        </div>
+                        
+                        <div class="policy-box scroll-reveal">
+                            <div class="policy-icon">
+                                <i class="fas fa-user-lock"></i>
+                            </div>
+                            <h3>Your Rights</h3>
+                            <p>You have the right to know how your data is used and to opt-out of data collection.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-note scroll-reveal">
+                        <div class="note-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <p><strong>Important:</strong> This is a static educational website. All form elements and interactive features are for design purposes only and do not actually collect or process user data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2026 StudentGuide. All rights reserved.</p>
+                    <p><a href="privacy-policy.html">Privacy Policy</a></p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                
+                // Initialize particles
+                createParticles();
+                
+                // Initialize scroll reveal
+                initScrollReveal();
+                
+                // Show cookie banner after delay
+                setTimeout(() => {
+                    showCookieBanner();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Add animation to menu items
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, index) => {
+                if (navMenu.classList.contains('active')) {
+                    link.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1 + 0.3}s`;
+                } else {
+                    link.style.animation = '';
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => {
+            n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#3498db', '#e74c3c', '#27ae60', '#f39c12', '#9b59b6'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 12 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 12;
+                const duration = Math.random() * 12 + 8;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll reveal animation
+        function initScrollReveal() {
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('active');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            
+            // Initial check
+            handleScrollAnimation();
+            
+            // Listen for scroll
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+        }
+
+        // Cookie banner functions
+        function showCookieBanner() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieBanner.style.display = 'block';
+                }, 1000);
+            }
+        }
+
+        function hideCookieBanner() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            cookieBanner.style.display = 'none';
+        }
+
+        // Cookie buttons event listeners
+        document.getElementById('acceptCookies')?.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            hideCookieBanner();
+            
+            // Show acceptance animation
+            const acceptanceMsg = document.createElement('div');
+            acceptanceMsg.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #27ae60, #229954);
+                    color: white;
+                    padding: 30px 50px;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    z-index: 1001;
+                    text-align: center;
+                    animation: fadeIn 0.5s ease;
+                ">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Cookies Accepted!</h3>
+                    <p>Thank you for accepting our cookie policy.</p>
+                    <button onclick="this.parentElement.remove()" style="
+                        margin-top: 20px;
+                        background: white;
+                        color: #27ae60;
+                        border: none;
+                        padding: 10px 30px;
+                        border-radius: 50px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">OK</button>
+                </div>
+            `;
+            document.body.appendChild(acceptanceMsg);
+            
+            setTimeout(() => {
+                acceptanceMsg.remove();
+            }, 3000);
+        });
+
+        document.getElementById('declineCookies')?.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            hideCookieBanner();
+            
+            // Show decline animation
+            const declineMsg = document.createElement('div');
+            declineMsg.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #e74c3c, #c0392b);
+                    color: white;
+                    padding: 30px 50px;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    z-index: 1001;
+                    text-align: center;
+                    animation: fadeIn 0.5s ease;
+                ">
+                    <i class="fas fa-exclamation-circle" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Cookies Declined</h3>
+                    <p>Some features may not work properly without cookies.</p>
+                    <button onclick="this.parentElement.remove()" style="
+                        margin-top: 20px;
+                        background: white;
+                        color: #e74c3c;
+                        border: none;
+                        padding: 10px 30px;
+                        border-radius: 50px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                    ">OK</button>
+                </div>
+            `;
+            document.body.appendChild(declineMsg);
+            
+            setTimeout(() => {
+                declineMsg.remove();
+            }, 3000);
+        });
+
+        // Policy box animations
+        document.querySelectorAll('.policy-box').forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulse 0.5s ease';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.animation = 'bounce 3s infinite';
+            });
+        });
+
+        // Add ripple effect to buttons and boxes
+        document.querySelectorAll('.nav-link, .policy-box, .cookie-btn, .policy-note').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const privacySection = document.querySelector('.privacy-section');
+            
+            if (privacySection) {
+                privacySection.style.backgroundPositionY = `${scrolled * 0.3}px`;
+            }
+        });
+
+        // Typewriter effect for heading
+        const heading = document.querySelector('.page-heading');
+        const originalText = heading.textContent;
+        heading.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                heading.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // Start typing animation after loading
+        setTimeout(typeWriter, 1800);
+
+        // Animate policy paragraphs one by one
+        const policyParagraphs = document.querySelectorAll('.policy-text p');
+        policyParagraphs.forEach((p, index) => {
+            setTimeout(() => {
+                p.style.opacity = '1';
+            }, 600 + (index * 200));
+        });
+
+        // Legal stamp click effect
+        const legalStamp = document.querySelector('.legal-stamp');
+        if (legalStamp) {
+            legalStamp.addEventListener('click', function() {
+                this.style.animation = 'rotate 1s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9 Pairing Scheme - Student Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(52, 152, 219, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(52, 152, 219, 0.8); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes tableRow {
+            from { transform: translateX(-30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: slideInDown 0.5s ease;
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            animation: slideInLeft 0.8s ease;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 2.2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            animation: slideInRight 0.8s ease;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: var(--primary-color);
+            padding: 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            background: #2980b9;
+            transform: rotate(90deg);
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: calc(100vh - 160px);
+        }
+
+        .scheme-section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scheme-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%233498db" opacity="0.03" d="M0,500L48,528C96,556,192,612,288,628C384,644,480,620,576,580C672,540,768,484,864,470C960,456,1056,484,1152,492C1248,500,1344,488,1392,482L1440,476L1440,1000L1392,1000C1344,1000,1248,1000,1152,1000C1056,1000,960,1000,864,1000C768,1000,672,1000,576,1000C480,1000,384,1000,288,1000C192,1000,96,1000,48,1000L0,1000Z"></path></svg>');
+            background-size: cover;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .scheme-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-heading {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+            animation: fadeIn 1s ease, pulse 2s infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            border-radius: 3px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .page-subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            max-width: 800px;
+            margin: 30px auto 0;
+            line-height: 1.7;
+            animation: fadeIn 1.2s ease 0.3s both;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .back-link {
+            margin-bottom: 40px;
+            animation: fadeIn 1.3s ease 0.4s both;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--secondary-color), #1a2530);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .back-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .back-btn:hover::before {
+            left: 100%;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #1a2530, var(--secondary-color));
+        }
+
+        .back-btn i {
+            transition: var(--transition);
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-5px);
+        }
+
+        .scheme-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Subject Cards Styling */
+        .subject-scheme {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid transparent;
+            animation: fadeIn 1.4s ease forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-scheme:nth-child(1) { animation-delay: 0.5s; border-left-color: #3498db; }
+        .subject-scheme:nth-child(2) { animation-delay: 0.6s; border-left-color: #e74c3c; }
+        .subject-scheme:nth-child(3) { animation-delay: 0.7s; border-left-color: #27ae60; }
+        .subject-scheme:nth-child(4) { animation-delay: 0.8s; border-left-color: #f39c12; }
+        .subject-scheme:nth-child(5) { animation-delay: 0.9s; border-left-color: #9b59b6; }
+        .subject-scheme:nth-child(6) { animation-delay: 1.0s; border-left-color: #1abc9c; }
+        .subject-scheme:nth-child(7) { animation-delay: 1.1s; border-left-color: #d35400; }
+        .subject-scheme:nth-child(8) { animation-delay: 1.2s; border-left-color: #34495e; }
+        .subject-scheme:nth-child(9) { animation-delay: 1.3s; border-left-color: #16a085; }
+        .subject-scheme:nth-child(10) { animation-delay: 1.4s; border-left-color: #8e44ad; }
+
+        .subject-scheme::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .subject-scheme:hover::before {
+            left: 100%;
+        }
+
+        .subject-scheme:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-title {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .subject-title::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .question-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .question-points p {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+            animation: tableRow 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .question-points p:nth-child(1) { animation-delay: 0.6s; }
+        .question-points p:nth-child(2) { animation-delay: 0.7s; }
+        .question-points p:nth-child(3) { animation-delay: 0.8s; }
+        .subject-scheme:nth-child(2) .question-points p { animation-delay: calc(0.7s + var(--delay)); }
+        .subject-scheme:nth-child(3) .question-points p { animation-delay: calc(0.8s + var(--delay)); }
+
+        .question-points p:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .question-points strong {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Table View Toggle */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease 0.5s both;
+        }
+
+        .view-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .view-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Table View Styles */
+        .table-view {
+            display: none;
+            overflow-x: auto;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .scheme-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .scheme-table th {
+            background: linear-gradient(135deg, var(--secondary-color), #1a2530);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .scheme-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .scheme-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .scheme-table tr:hover td {
+            background: #e3f2fd;
+            transform: scale(1.01);
+        }
+
+        .subject-cell {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .question-cell {
+            color: #666;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 25px;
+            padding: 50px;
+            margin-top: 60px;
+            text-align: center;
+            animation: fadeIn 1.8s ease 0.7s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%23ffffff" opacity="0.1" d="M0,500L48,528C96,556,192,612,288,628C384,644,480,620,576,580C672,540,768,484,864,470C960,456,1056,484,1152,492C1248,500,1344,488,1392,482L1440,476L1440,1000L1392,1000C1344,1000,1248,1000,1152,1000C1056,1000,960,1000,864,1000C768,1000,672,1000,576,1000C480,1000,384,1000,288,1000C192,1000,96,1000,48,1000L0,1000Z"></path></svg>');
+            background-size: cover;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .download-text {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            color: var(--primary-color);
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+        }
+
+        .download-btn i {
+            transition: var(--transition);
+        }
+
+        .download-btn:hover i {
+            transform: translateY(5px);
+        }
+
+        /* Notice Section */
+        .scheme-notice {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(241, 196, 15, 0.1));
+            border-left: 5px solid var(--warning-color);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            animation: fadeIn 2s ease 0.9s both;
+            transition: var(--transition);
+        }
+
+        .scheme-notice:hover {
+            transform: translateX(15px);
+            box-shadow: 0 15px 35px rgba(243, 156, 18, 0.2);
+        }
+
+        .notice-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--warning-color), #f1c40f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+            animation: bounce 2s infinite;
+        }
+
+        .scheme-notice p {
+            color: #d35400;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .scheme-notice strong {
+            color: #e67e22;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color), var(--accent-color));
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease;
+        }
+
+        .footer-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-info a {
+            color: var(--primary-color);
+            transition: var(--transition);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .footer-info a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-info a:hover {
+            color: white;
+        }
+
+        .footer-info a:hover::after {
+            width: 100%;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-social a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social a:hover::before {
+            transform: scale(1);
+        }
+
+        .footer-social a i {
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover i {
+            transform: rotate(360deg) scale(1.2);
+            color: white;
+        }
+
+        .footer-social a:nth-child(1):hover::before { background: #4267B2; }
+        .footer-social a:nth-child(2):hover::before { background: #1DA1F2; }
+        .footer-social a:nth-child(3):hover::before { background: #FF0000; }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .page-heading {
+                font-size: 3rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.2rem;
+                padding: 18px;
+            }
+            
+            .subject-scheme {
+                padding: 35px 30px;
+            }
+            
+            .subject-title {
+                font-size: 1.8rem;
+            }
+            
+            .question-points {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .download-title {
+                font-size: 2.2rem;
+            }
+            
+            .download-btn {
+                padding: 18px 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: linear-gradient(135deg, var(--secondary-color) 0%, #1a2530 100%);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                padding: 30px 0;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                border-top: 2px solid var(--primary-color);
+            }
+
+            .nav-menu.active {
+                left: 0;
+                animation: slideInRight 0.5s ease;
+            }
+
+            .nav-link {
+                padding: 20px;
+                justify-content: center;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .page-heading {
+                font-size: 2.5rem;
+            }
+
+            .subject-scheme {
+                padding: 30px 25px;
+            }
+
+            .subject-title {
+                font-size: 1.6rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .question-points {
+                grid-template-columns: 1fr;
+            }
+
+            .scheme-notice {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .notice-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .download-section {
+                padding: 40px 30px;
+            }
+
+            .download-title {
+                font-size: 2rem;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .view-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .main-content {
+                padding-top: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-heading {
+                font-size: 2.2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+
+            .subject-scheme {
+                padding: 25px 20px;
+            }
+
+            .subject-title {
+                font-size: 1.4rem;
+            }
+
+            .question-points p {
+                padding: 15px;
+            }
+
+            .download-title {
+                font-size: 1.8rem;
+            }
+
+            .download-text {
+                font-size: 1.1rem;
+            }
+
+            .download-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+
+            .back-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo i {
+                font-size: 1.8rem;
+            }
+
+            .footer-info p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>StudentGuide</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="../contact.html" class="nav-link"><i class="fas fa-address-book"></i> Contact</a></li>
+                </ul>
+                
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Pairing Scheme Content -->
+    <main class="main-content">
+        <section class="scheme-section">
+            <div class="container">
+                <div class="scheme-header">
+                    <h1 class="page-heading animate__animated animate__fadeInDown">Class 9 Pairing Scheme</h1>
+                    <p class="page-subtitle scroll-reveal">Complete marking distribution and exam pattern for all subjects</p>
+                </div>
+                
+                <div class="back-link">
+                    <a href="../classes/class9.html" class="back-btn scroll-reveal">
+                        <i class="fas fa-arrow-left"></i> Back to Class 9
+                    </a>
+                </div>
+
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <button class="view-btn active" id="cardViewBtn">
+                        <i class="fas fa-th-large"></i> Card View
+                    </button>
+                    <button class="view-btn" id="tableViewBtn">
+                        <i class="fas fa-table"></i> Table View
+                    </button>
+                </div>
+                
+                <!-- Card View Content -->
+                <div class="card-view" id="cardView">
+                    <div class="scheme-content">
+                        <!-- Physics -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-atom"></i> Physics 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Chemistry -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-flask"></i> Chemistry 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Computer -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-laptop-code"></i> Computer 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mathematics -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-calculator"></i> Mathematics 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- English -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-language"></i> English 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Urdu -->
+                        <div class="subject-scheme">
+                            <h2 class="subject-title">
+                                <i class="fas fa-book-open"></i> Urdu 9th Class Pairing Scheme
+                            </h2>
+                            <div class="question-points">
+                                <p><strong>Question 1:</strong> Content for question 1 will be added here.</p>
+                                <p><strong>Question 2:</strong> Content for question 2 will be added here.</p>
+                                <p><strong>Question 3:</strong> Content for question 3 will be added here.</p>
+                                <p><strong>Question 4:</strong> Content for question 4 will be added here.</p>
+                                <p><strong>Question 5:</strong> Content for question 5 will be added here.</p>
+                                <p><strong>Question 6:</strong> Content for question 6 will be added here.</p>
+                                <p><strong>Question 7:</strong> Content for question 7 will be added here.</p>
+                                <p><strong>Question 8:</strong> Content for question 8 will be added here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table View Content -->
+                <div class="table-view" id="tableView">
+                    <table class="scheme-table">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Question</th>
+                                <th>Marks Distribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="subject-cell">Physics</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                            <tr>
+                                <td class="subject-cell">Chemistry</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                            <tr>
+                                <td class="subject-cell">Computer</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                            <tr>
+                                <td class="subject-cell">Mathematics</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                            <tr>
+                                <td class="subject-cell">English</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                            <tr>
+                                <td class="subject-cell">Urdu</td>
+                                <td class="question-cell">Question 1-8</td>
+                                <td>Content will be added here</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section scroll-reveal">
+                    <div class="download-content">
+                        <h2 class="download-title">Download Complete Pairing Scheme</h2>
+                        <p class="download-text">Get the complete Class 9 pairing scheme in PDF format. Includes all subjects with detailed marking distribution and exam patterns.</p>
+                        <a href="#" class="download-btn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Notice -->
+                <div class="scheme-notice scroll-reveal">
+                    <div class="notice-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <p><strong>Note:</strong> All content areas are empty and ready for data. Actual pairing scheme content will be added later. CSS will style these sections properly.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2026 StudentGuide. All rights reserved.</p>
+                    <p><a href="../privacy-policy.html">Privacy Policy</a></p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                
+                // Initialize particles
+                createParticles();
+                
+                // Initialize scroll reveal
+                initScrollReveal();
+                
+                // Initialize view toggle
+                initViewToggle();
+            }, 1500);
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Add animation to menu items
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, index) => {
+                if (navMenu.classList.contains('active')) {
+                    link.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1 + 0.3}s`;
+                } else {
+                    link.style.animation = '';
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => {
+            n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#3498db', '#e74c3c', '#27ae60', '#f39c12', '#9b59b6'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 12 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 12;
+                const duration = Math.random() * 12 + 8;
+                
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.background = color;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll reveal animation
+        function initScrollReveal() {
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('active');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            
+            // Initial check
+            handleScrollAnimation();
+            
+            // Listen for scroll
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+        }
+
+        // Initialize view toggle
+        function initViewToggle() {
+            const cardViewBtn = document.getElementById('cardViewBtn');
+            const tableViewBtn = document.getElementById('tableViewBtn');
+            const cardView = document.getElementById('cardView');
+            const tableView = document.getElementById('tableView');
+
+            cardViewBtn.addEventListener('click', function() {
+                this.classList.add('active');
+                tableViewBtn.classList.remove('active');
+                cardView.style.display = 'block';
+                tableView.style.display = 'none';
+                
+                // Add animation
+                cardView.style.animation = 'fadeIn 0.8s ease';
+            });
+
+            tableViewBtn.addEventListener('click', function() {
+                this.classList.add('active');
+                cardViewBtn.classList.remove('active');
+                cardView.style.display = 'none';
+                tableView.style.display = 'block';
+                
+                // Add animation
+                tableView.style.animation = 'fadeIn 0.8s ease';
+                
+                // Animate table rows
+                const tableRows = document.querySelectorAll('.scheme-table tbody tr');
+                tableRows.forEach((row, index) => {
+                    setTimeout(() => {
+                        row.style.animation = `tableRow 0.6s ease forwards ${index * 0.1}s`;
+                        row.style.opacity = '1';
+                    }, 300);
+                });
+            });
+        }
+
+        // Subject scheme hover effects
+        document.querySelectorAll('.subject-scheme').forEach(scheme => {
+            scheme.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulse 0.5s ease';
+            });
+            
+            scheme.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Download button animation
+        const downloadBtn = document.querySelector('.download-btn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add download animation
+                this.style.animation = 'bounce 1s ease';
+                
+                // Show download success message
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #27ae60, #229954);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 25px;
+                        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+                        z-index: 1001;
+                        text-align: center;
+                        max-width: 500px;
+                        width: 90%;
+                        animation: fadeIn 0.5s ease;
+                    ">
+                        <i class="fas fa-file-pdf" style="font-size: 5rem; margin-bottom: 25px; animation: float 2s ease-in-out infinite;"></i>
+                        <h3 style="font-size: 2rem; margin-bottom: 15px;">Download Started!</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.9;">
+                            Pairing scheme PDF download has started. Check your downloads folder.
+                        </p>
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            margin-top: 30px;
+                            background: white;
+                            color: #27ae60;
+                            border: none;
+                            padding: 15px 40px;
+                            border-radius: 50px;
+                            font-weight: bold;
+                            font-size: 1.1rem;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                        ">
+                            <i class="fas fa-check"></i> Got it!
+                        </button>
+                    </div>
+                    <div style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.7);
+                        z-index: 1000;
+                        animation: fadeIn 0.5s ease;
+                    " onclick="this.parentElement.remove()"></div>
+                `;
+                document.body.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    successMsg.remove();
+                    downloadBtn.style.animation = '';
+                }, 3000);
+            });
+        }
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.nav-link, .back-btn, .view-btn, .download-btn, .subject-scheme').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const schemeSection = document.querySelector('.scheme-section');
+            
+            if (schemeSection) {
+                schemeSection.style.backgroundPositionY = `${scrolled * 0.3}px`;
+            }
+        });
+
+        // Typewriter effect for heading
+        const heading = document.querySelector('.page-heading');
+        const originalText = heading.textContent;
+        heading.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                heading.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // Start typing animation after loading
+        setTimeout(typeWriter, 1800);
+
+        // Animate question points
+        const questionPoints = document.querySelectorAll('.question-points p');
+        questionPoints.forEach((point, index) => {
+            setTimeout(() => {
+                point.style.opacity = '1';
+                point.style.transform = 'translateX(0)';
+            }, 600 + (index * 100));
+        });
+
+        // Table row hover effect
+        const tableRows = document.querySelectorAll('.scheme-table tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.01)';
+            });
+            
+            row.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
