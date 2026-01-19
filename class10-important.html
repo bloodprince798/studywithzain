@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 9 Past Papers - Student Guide</title>
+    <title>Class 9 Important Syllabus - Student Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
@@ -99,10 +99,14 @@
             to { width: 100%; }
         }
 
-        @keyframes pdfDownload {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+        @keyframes expandCard {
+            from { max-height: 300px; }
+            to { max-height: 1000px; }
+        }
+
+        @keyframes questionAppear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header & Navigation */
@@ -238,13 +242,13 @@
             min-height: calc(100vh - 160px);
         }
 
-        .papers-section {
+        .syllabus-section {
             padding: 60px 0;
             position: relative;
             overflow: hidden;
         }
 
-        .papers-section::before {
+        .syllabus-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -256,7 +260,7 @@
             animation: float 20s ease-in-out infinite;
         }
 
-        .papers-header {
+        .syllabus-header {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
@@ -289,24 +293,17 @@
         }
 
         .page-subtitle {
-            font-size: 1.8rem;
-            color: var(--accent-color);
+            font-size: 1.4rem;
+            color: #666;
             max-width: 800px;
             margin: 30px auto 0;
             line-height: 1.7;
             animation: fadeIn 1.2s ease 0.3s both;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            border: 3px dashed var(--accent-color);
-            font-weight: 700;
-        }
-
-        .page-subtitle i {
-            color: var(--accent-color);
-            margin-right: 10px;
-            animation: bounce 2s infinite;
+            border-left: 5px solid var(--primary-color);
         }
 
         .back-link {
@@ -359,8 +356,8 @@
             transform: translateX(-5px);
         }
 
-        /* Papers Grid */
-        .papers-grid {
+        /* Subjects Grid */
+        .subjects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 35px;
@@ -369,33 +366,30 @@
             z-index: 1;
         }
 
-        .paper-card {
+        .subject-card {
             background: linear-gradient(145deg, #ffffff, #f0f0f0);
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 35px 30px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1.4s ease forwards;
+            animation: fadeIn 1.4s ease forwards, expandCard 1.2s ease 0.5s forwards;
             opacity: 0;
-            text-align: center;
+            max-height: 1000px;
+            overflow-y: visible;
+            cursor: pointer;
             border-top: 5px solid transparent;
         }
 
-        .paper-card:nth-child(1) { animation-delay: 0.5s; border-top-color: #3498db; }
-        .paper-card:nth-child(2) { animation-delay: 0.6s; border-top-color: #e74c3c; }
-        .paper-card:nth-child(3) { animation-delay: 0.7s; border-top-color: #27ae60; }
-        .paper-card:nth-child(4) { animation-delay: 0.8s; border-top-color: #f39c12; }
-        .paper-card:nth-child(5) { animation-delay: 0.9s; border-top-color: #9b59b6; }
-        .paper-card:nth-child(6) { animation-delay: 1.0s; border-top-color: #1abc9c; }
-        .paper-card:nth-child(7) { animation-delay: 1.1s; border-top-color: #d35400; }
-        .paper-card:nth-child(8) { animation-delay: 1.2s; border-top-color: #34495e; }
-        .paper-card:nth-child(9) { animation-delay: 1.3s; border-top-color: #16a085; }
-        .paper-card:nth-child(10) { animation-delay: 1.4s; border-top-color: #8e44ad; }
-        .paper-card:nth-child(11) { animation-delay: 1.5s; border-top-color: #2c3e50; }
+        .subject-card:nth-child(1) { animation-delay: 0.5s; border-top-color: #3498db; }
+        .subject-card:nth-child(2) { animation-delay: 0.6s; border-top-color: #e74c3c; }
+        .subject-card:nth-child(3) { animation-delay: 0.7s; border-top-color: #27ae60; }
+        .subject-card:nth-child(4) { animation-delay: 0.8s; border-top-color: #f39c12; }
+        .subject-card:nth-child(5) { animation-delay: 0.9s; border-top-color: #9b59b6; }
+        .subject-card:nth-child(6) { animation-delay: 1.0s; border-top-color: #1abc9c; }
 
-        .paper-card::before {
+        .subject-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -406,260 +400,123 @@
             transition: left 0.7s ease;
         }
 
-        .paper-card:hover::before {
+        .subject-card:hover::before {
             left: 100%;
         }
 
-        .paper-card:hover {
+        .subject-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
-        .paper-icon {
-            font-size: 4rem;
+        .subject-icon {
+            font-size: 3.5rem;
             margin-bottom: 25px;
             transition: var(--transition);
             animation: float 3s ease-in-out infinite;
             display: inline-block;
         }
 
-        .paper-card:hover .paper-icon {
+        .subject-card:hover .subject-icon {
             transform: scale(1.2) rotate(360deg);
             animation: none;
         }
 
-        .paper-card h3 {
-            font-size: 2rem;
+        .subject-card h3 {
+            font-size: 1.8rem;
             color: var(--secondary-color);
             margin-bottom: 15px;
             font-weight: 700;
             transition: var(--transition);
         }
 
-        .paper-card:hover h3 {
+        .subject-card:hover h3 {
             transform: scale(1.1);
             color: var(--primary-color);
         }
 
-        .paper-card p {
+        .subject-card p {
             color: #666;
             font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 30px;
-            transition: var(--transition);
-        }
-
-        /* Single PDF Button */
-        .pdf-single-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pdf-main-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(135deg, var(--accent-color), #c0392b);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            max-width: 250px;
-        }
-
-        .pdf-main-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .pdf-main-btn:hover::before {
-            left: 100%;
-        }
-
-        .pdf-main-btn:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(231, 76, 60, 0.4);
-            background: linear-gradient(135deg, #c0392b, var(--accent-color));
-            animation: pdfDownload 0.8s ease;
-        }
-
-        .pdf-main-btn i {
-            transition: var(--transition);
-            font-size: 1.4rem;
-        }
-
-        .pdf-main-btn:hover i {
-            transform: scale(1.2) rotate(15deg);
-        }
-
-        .pdf-size {
-            font-size: 0.9rem;
-            color: #888;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
-        /* PDF Preview Section */
-        .pdf-preview {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            animation: fadeIn 0.3s ease;
-            overflow: auto;
-        }
-
-        .pdf-preview.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pdf-preview-content {
-            background: white;
-            width: 90%;
-            max-width: 1000px;
-            height: 90vh;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            position: relative;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .pdf-preview-header {
-            background: linear-gradient(135deg, var(--secondary-color), #1a2530);
-            color: white;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .pdf-preview-header h3 {
-            font-size: 1.5rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .close-preview {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-preview:hover {
-            transform: rotate(90deg);
-            background: #c0392b;
-        }
-
-        .pdf-preview-body {
-            padding: 30px;
-            height: calc(90vh - 80px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .pdf-placeholder {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 60px 40px;
-            width: 100%;
-            border: 3px dashed #ddd;
-        }
-
-        .pdf-placeholder i {
-            font-size: 5rem;
-            color: var(--accent-color);
             margin-bottom: 25px;
-            animation: float 2s ease-in-out infinite;
+            transition: var(--transition);
         }
 
-        .pdf-placeholder h4 {
-            font-size: 2rem;
+        .questions-list {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px dashed #ddd;
+            animation: fadeIn 1s ease 1s forwards;
+            opacity: 0;
+        }
+
+        .questions-list h4 {
+            font-size: 1.3rem;
             color: var(--secondary-color);
             margin-bottom: 20px;
-        }
-
-        .pdf-placeholder p {
-            color: #666;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .pdf-actions {
+            font-weight: 600;
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .pdf-action-btn {
-            display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 12px 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .questions-list h4::before {
+            content: '📚';
+            font-size: 1.2rem;
+        }
+
+        .questions-list ul {
+            list-style-type: none;
+        }
+
+        .questions-list li {
+            background: rgba(248, 249, 250, 0.8);
+            margin-bottom: 12px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
             transition: var(--transition);
-            border: none;
-            font-size: 1.1rem;
+            animation: questionAppear 0.5s ease forwards;
+            opacity: 0;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
-        .pdf-download-btn {
-            background: linear-gradient(135deg, var(--success-color), #229954);
-            color: white;
-        }
+        .questions-list li:nth-child(1) { animation-delay: 1.1s; }
+        .questions-list li:nth-child(2) { animation-delay: 1.2s; }
+        .questions-list li:nth-child(3) { animation-delay: 1.3s; }
+        .questions-list li:nth-child(4) { animation-delay: 1.4s; }
+        .questions-list li:nth-child(5) { animation-delay: 1.5s; }
+        .questions-list li:nth-child(6) { animation-delay: 1.6s; }
+        .questions-list li:nth-child(7) { animation-delay: 1.7s; }
+        .questions-list li:nth-child(8) { animation-delay: 1.8s; }
+        .questions-list li:nth-child(9) { animation-delay: 1.9s; }
+        .questions-list li:nth-child(10) { animation-delay: 2.0s; }
+        .questions-list li:nth-child(11) { animation-delay: 2.1s; }
+        .questions-list li:nth-child(12) { animation-delay: 2.2s; }
+        .questions-list li:nth-child(13) { animation-delay: 2.3s; }
+        .questions-list li:nth-child(14) { animation-delay: 2.4s; }
+        .questions-list li:nth-child(15) { animation-delay: 2.5s; }
+        .questions-list li:nth-child(16) { animation-delay: 2.6s; }
+        .questions-list li:nth-child(17) { animation-delay: 2.7s; }
+        .questions-list li:nth-child(18) { animation-delay: 2.8s; }
+        .questions-list li:nth-child(19) { animation-delay: 2.9s; }
+        .questions-list li:nth-child(20) { animation-delay: 3.0s; }
 
-        .pdf-view-btn {
-            background: linear-gradient(135deg, var(--primary-color), #2980b9);
-            color: white;
-        }
-
-        .pdf-action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        .questions-list li:hover {
+            transform: translateX(10px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-color);
         }
 
         /* Notice Section */
-        .papers-note {
+        .syllabus-note {
             background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
             border-left: 5px solid var(--primary-color);
             padding: 25px;
@@ -672,7 +529,7 @@
             transition: var(--transition);
         }
 
-        .papers-note:hover {
+        .syllabus-note:hover {
             transform: translateX(10px);
             box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2);
         }
@@ -691,23 +548,15 @@
             animation: bounce 2s infinite;
         }
 
-        .papers-note p {
+        .syllabus-note p {
             color: var(--secondary-color);
             font-size: 1.1rem;
             line-height: 1.7;
             margin: 0;
         }
 
-        .papers-note strong {
+        .syllabus-note strong {
             color: var(--primary-color);
-        }
-
-        .papers-note code {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-family: monospace;
-            color: var(--accent-color);
         }
 
         /* Footer */
@@ -848,30 +697,30 @@
             }
             
             .page-subtitle {
-                font-size: 1.5rem;
-                padding: 20px;
+                font-size: 1.2rem;
+                padding: 18px;
             }
             
-            .papers-grid {
+            .subjects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
                 gap: 30px;
             }
             
-            .paper-card {
-                padding: 35px 25px;
+            .subject-card {
+                padding: 30px 25px;
             }
             
-            .paper-icon {
-                font-size: 3.5rem;
+            .subject-icon {
+                font-size: 3rem;
             }
             
-            .paper-card h3 {
-                font-size: 1.8rem;
+            .subject-card h3 {
+                font-size: 1.6rem;
             }
             
-            .pdf-main-btn {
-                padding: 16px 35px;
-                font-size: 1.1rem;
+            .questions-list li {
+                padding: 12px;
+                font-size: 0.95rem;
             }
         }
 
@@ -915,32 +764,16 @@
                 font-size: 2.5rem;
             }
 
-            .page-subtitle {
-                font-size: 1.3rem;
-                padding: 18px;
-            }
-
-            .papers-grid {
+            .subjects-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
 
-            .paper-card {
-                padding: 30px 20px;
+            .subject-card {
+                padding: 25px 20px;
             }
 
-            .pdf-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .pdf-action-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-
-            .papers-note {
+            .syllabus-note {
                 flex-direction: column;
                 text-align: center;
                 padding: 20px;
@@ -977,48 +810,35 @@
                 padding: 15px;
             }
 
-            .paper-card {
-                padding: 25px 15px;
+            .subject-card {
+                padding: 20px 15px;
             }
 
-            .paper-icon {
-                font-size: 3rem;
+            .subject-icon {
+                font-size: 2.8rem;
             }
 
-            .paper-card h3 {
-                font-size: 1.6rem;
+            .subject-card h3 {
+                font-size: 1.4rem;
             }
 
-            .paper-card p {
+            .subject-card p {
                 font-size: 1rem;
             }
 
-            .pdf-main-btn {
-                padding: 14px 30px;
-                font-size: 1rem;
-                max-width: 220px;
+            .questions-list h4 {
+                font-size: 1.2rem;
+                padding: 10px 15px;
+            }
+
+            .questions-list li {
+                padding: 10px;
+                font-size: 0.9rem;
             }
 
             .back-btn {
                 padding: 12px 25px;
                 font-size: 1rem;
-            }
-
-            .pdf-preview-content {
-                width: 95%;
-                height: 85vh;
-            }
-
-            .pdf-placeholder {
-                padding: 40px 20px;
-            }
-
-            .pdf-placeholder i {
-                font-size: 4rem;
-            }
-
-            .pdf-placeholder h4 {
-                font-size: 1.6rem;
             }
 
             .logo {
@@ -1090,33 +910,6 @@
     <!-- Floating Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- PDF Preview Modal -->
-    <div class="pdf-preview" id="pdfPreview">
-        <div class="pdf-preview-content">
-            <div class="pdf-preview-header">
-                <h3><i class="fas fa-file-pdf"></i> <span id="pdfTitle">Past Paper Preview</span></h3>
-                <button class="close-preview" onclick="closePDFPreview()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="pdf-preview-body">
-                <div class="pdf-placeholder">
-                    <i class="fas fa-file-pdf"></i>
-                    <h4>PDF Preview</h4>
-                    <p>This is a preview of the past paper PDF. The actual PDF content would be displayed here with download and view options.</p>
-                    <div class="pdf-actions">
-                        <button class="pdf-action-btn pdf-download-btn" onclick="downloadPDF()">
-                            <i class="fas fa-download"></i> Download PDF (2.5 MB)
-                        </button>
-                        <button class="pdf-action-btn pdf-view-btn" onclick="viewPDF()">
-                            <i class="fas fa-external-link-alt"></i> View Full PDF
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation Bar -->
     <header class="header">
         <div class="container">
@@ -1141,193 +934,239 @@
         </div>
     </header>
 
-    <!-- Past Papers Content -->
+    <!-- Important Syllabus Content -->
     <main class="main-content">
-        <section class="papers-section">
+        <section class="syllabus-section">
             <div class="container">
-                <div class="papers-header">
-                    <h1 class="page-heading animate__animated animate__fadeInDown">Class 9 Past Papers</h1>
-                    <p class="page-subtitle scroll-reveal"><i class="fas fa-clock"></i> InshaAllah, coming soon</p>
+                <div class="syllabus-header">
+                    <h1 class="page-heading animate__animated animate__fadeInDown">Class 9 Important Syllabus</h1>
+                    <p class="page-subtitle scroll-reveal">Here you will find all important questions of this class</p>
                 </div>
                 
                 <div class="back-link">
-                    <a href="../classes/class9.html" class="back-btn scroll-reveal">
+                    <a href="../class9.html" class="back-btn scroll-reveal">
                         <i class="fas fa-arrow-left"></i> Back to Class 9
                     </a>
                 </div>
                 
-                <div class="papers-grid">
+                <div class="subjects-grid">
                     <!-- Physics -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="physics-card">
+                        <div class="subject-icon">
                             <i class="fas fa-atom"></i>
                         </div>
                         <h3>Physics</h3>
-                        <p>Complete past papers for Physics Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Physics Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 5.2 MB</span>
+                        <p>Important questions and syllabus for Physics Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>What is physics? Define its main branches.</li>
+                                <li>Explain the concept of motion with examples.</li>
+                                <li>Define force and explain Newton's laws of motion.</li>
+                                <li>What is work, energy and power? Give formulas.</li>
+                                <li>Explain the law of conservation of energy.</li>
+                                <li>Define density and explain Archimedes principle.</li>
+                                <li>What is pressure? Explain its types with examples.</li>
+                                <li>Explain the structure of matter and states of matter.</li>
+                                <li>Define heat and temperature, explain difference.</li>
+                                <li>Explain the process of heat transfer.</li>
+                                <li>What is light? Explain reflection and refraction.</li>
+                                <li>Define sound and explain its characteristics.</li>
+                                <li>Explain the working of simple machines.</li>
+                                <li>What is electricity? Explain current and voltage.</li>
+                                <li>Explain Ohm's law with circuit diagram.</li>
+                                <li>Define magnetism and explain magnetic field.</li>
+                                <li>What are conductors and insulators? Give examples.</li>
+                                <li>Explain the structure of atom with diagram.</li>
+                                <li>Define nuclear physics and its applications.</li>
+                                <li>Explain the importance of physics in daily life.</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Chemistry -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="chemistry-card">
+                        <div class="subject-icon">
                             <i class="fas fa-flask"></i>
                         </div>
                         <h3>Chemistry</h3>
-                        <p>Complete past papers for Chemistry Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Chemistry Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 4.8 MB</span>
+                        <p>Important questions and syllabus for Chemistry Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>What is chemistry? Define its branches.</li>
+                                <li>Explain the classification of matter.</li>
+                                <li>Define atom and molecule with examples.</li>
+                                <li>What is atomic structure? Explain with diagram.</li>
+                                <li>Explain the periodic table and its importance.</li>
+                                <li>Define chemical bonding and its types.</li>
+                                <li>What are acids, bases and salts? Give examples.</li>
+                                <li>Explain pH scale and its importance.</li>
+                                <li>Define chemical reactions and their types.</li>
+                                <li>Explain the law of conservation of mass.</li>
+                                <li>What are organic and inorganic compounds?</li>
+                                <li>Explain hydrocarbons and their classification.</li>
+                                <li>Define metals and non-metals with properties.</li>
+                                <li>What is corrosion? Explain prevention methods.</li>
+                                <li>Explain the water purification process.</li>
+                                <li>Define solutions and their types.</li>
+                                <li>What is chemical equilibrium? Explain.</li>
+                                <li>Explain environmental chemistry importance.</li>
+                                <li>Define polymers and their uses in daily life.</li>
+                                <li>Explain the importance of chemistry in industry.</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Computer -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="computer-card">
+                        <div class="subject-icon">
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <h3>Computer</h3>
-                        <p>Complete past papers for Computer Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Computer Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 3.7 MB</span>
+                        <p>Important questions and syllabus for Computer Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>What is computer? Explain its characteristics.</li>
+                                <li>Explain generations of computers.</li>
+                                <li>Define hardware and software with examples.</li>
+                                <li>What is operating system? Explain its functions.</li>
+                                <li>Explain input and output devices.</li>
+                                <li>Define memory and its types (RAM, ROM).</li>
+                                <li>What is CPU? Explain its components.</li>
+                                <li>Explain number systems (binary, decimal).</li>
+                                <li>Define programming and programming languages.</li>
+                                <li>What is algorithm? Explain with example.</li>
+                                <li>Explain flowchart symbols and their uses.</li>
+                                <li>Define data types and variables in programming.</li>
+                                <li>What are control structures? Explain.</li>
+                                <li>Explain loops in programming with examples.</li>
+                                <li>Define functions and their importance.</li>
+                                <li>What is database? Explain DBMS.</li>
+                                <li>Explain computer networks and their types.</li>
+                                <li>Define internet and its services.</li>
+                                <li>What is computer security? Explain threats.</li>
+                                <li>Explain the impact of computers on society.</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Mathematics -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="math-card">
+                        <div class="subject-icon">
                             <i class="fas fa-calculator"></i>
                         </div>
                         <h3>Mathematics</h3>
-                        <p>Complete past papers for Mathematics Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Mathematics Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 6.1 MB</span>
+                        <p>Important questions and syllabus for Mathematics Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>Define sets and explain operations on sets.</li>
+                                <li>What is real number system? Explain.</li>
+                                <li>Explain laws of exponents with examples.</li>
+                                <li>Define polynomials and their types.</li>
+                                <li>What is factorization? Explain methods.</li>
+                                <li>Explain algebraic formulas and identities.</li>
+                                <li>Define linear equations and their solutions.</li>
+                                <li>What is coordinate geometry? Explain.</li>
+                                <li>Explain distance formula and its applications.</li>
+                                <li>Define geometry and basic geometrical concepts.</li>
+                                <li>What are triangles? Explain types and properties.</li>
+                                <li>Explain Pythagoras theorem with proof.</li>
+                                <li>Define circles and their properties.</li>
+                                <li>What is trigonometry? Explain ratios.</li>
+                                <li>Explain mensuration formulas (area, volume).</li>
+                                <li>Define statistics and data representation.</li>
+                                <li>What is probability? Explain basic concepts.</li>
+                                <li>Explain mathematical reasoning and proofs.</li>
+                                <li>Define functions and their graphs.</li>
+                                <li>Explain the importance of mathematics in daily life.</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- English -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="english-card">
+                        <div class="subject-icon">
                             <i class="fas fa-language"></i>
                         </div>
                         <h3>English</h3>
-                        <p>Complete past papers for English Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('English Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 4.5 MB</span>
+                        <p>Important questions and syllabus for English Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>Explain parts of speech with examples.</li>
+                                <li>What are tenses? Explain all 12 tenses.</li>
+                                <li>Define direct and indirect speech rules.</li>
+                                <li>Explain active and passive voice conversion.</li>
+                                <li>What are articles? Explain their usage.</li>
+                                <li>Define prepositions and their types.</li>
+                                <li>Explain conjunctions and their uses.</li>
+                                <li>What are clauses? Explain types.</li>
+                                <li>Define sentence structure and types.</li>
+                                <li>Explain punctuation rules with examples.</li>
+                                <li>What is comprehension? How to attempt it?</li>
+                                <li>Define essay writing and its structure.</li>
+                                <li>Explain letter writing (formal/informal).</li>
+                                <li>What is story writing? Explain elements.</li>
+                                <li>Define paragraph writing techniques.</li>
+                                <li>Explain vocabulary building methods.</li>
+                                <li>What are idioms and phrases? Explain.</li>
+                                <li>Define synonyms and antonyms with examples.</li>
+                                <li>Explain reading comprehension strategies.</li>
+                                <li>What is grammar? Explain its importance.</li>
+                            </ul>
                         </div>
                     </div>
                     
                     <!-- Urdu -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
+                    <div class="subject-card" id="urdu-card">
+                        <div class="subject-icon">
                             <i class="fas fa-book-open"></i>
                         </div>
                         <h3>Urdu</h3>
-                        <p>Complete past papers for Urdu Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Urdu Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 4.3 MB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Pakistan Studies -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
-                            <i class="fas fa-flag"></i>
-                        </div>
-                        <h3>Pakistan Studies</h3>
-                        <p>Complete past papers for Pakistan Studies Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Pakistan Studies Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 3.9 MB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Islamiat -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
-                            <i class="fas fa-mosque"></i>
-                        </div>
-                        <h3>Islamiat</h3>
-                        <p>Complete past papers for Islamiat Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Islamiat Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 3.2 MB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Tarjma tul Quran -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
-                            <i class="fas fa-quran"></i>
-                        </div>
-                        <h3>Tarjma tul Quran</h3>
-                        <p>Complete past papers for Tarjma tul Quran Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Tarjma tul Quran Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 2.8 MB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Biology -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <h3>Biology</h3>
-                        <p>Complete past papers for Biology Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('Biology Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 5.5 MB</span>
-                        </div>
-                    </div>
-                    
-                    <!-- General Science -->
-                    <div class="paper-card">
-                        <div class="paper-icon">
-                            <i class="fas fa-globe-asia"></i>
-                        </div>
-                        <h3>General Science</h3>
-                        <p>Complete past papers for General Science Class 9</p>
-                        <div class="pdf-single-button">
-                            <button class="pdf-main-btn" onclick="openPDFPreview('General Science Past Papers (2019-2022)')">
-                                <i class="fas fa-file-pdf"></i> Download Past Papers
-                            </button>
-                            <span class="pdf-size">PDF - 4.1 MB</span>
+                        <p>Important questions and syllabus for Urdu Class 9</p>
+                        
+                        <div class="questions-list">
+                            <h4>20 Important Questions:</h4>
+                            <ul>
+                                <li>اردو زبان کی تاریخ اور اہمیت بیان کریں۔</li>
+                                <li>اردو حروف تہجی اور ان کی اقسام بیان کریں۔</li>
+                                <li>اسم اور اس کی اقسام کی تعریف کریں۔</li>
+                                <li>فعل اور اس کی اقسام کی وضاحت کریں۔</li>
+                                <li>حرف اور اس کی اقسام بیان کریں۔</li>
+                                <li>جملہ کی تعریف اور اس کی اقسام بیان کریں۔</li>
+                                <li>مضمون نگاری کے اصول اور طریقہ کار بیان کریں۔</li>
+                                <li>خط نگاری (رسمی اور غیر رسمی) کی وضاحت کریں۔</li>
+                                <li>کہانی نگاری کے بنیادی عناصر بیان کریں۔</li>
+                                <li>شاعری کی تعریف اور اس کی اقسام بیان کریں۔</li>
+                                <li>نظم اور نثر میں فرق واضح کریں۔</li>
+                                <li>اردو املا کے اہم قواعد بیان کریں۔</li>
+                                <li>ترکیب اور محاوروں کی اہمیت بیان کریں۔</li>
+                                <li>مترادفات اور متضادات کی مثالیں دیں۔</li>
+                                <li>اردو زبان میں قواعد کی اہمیت بیان کریں۔</li>
+                                <li>تقریر نگاری کے اصول بیان کریں۔</li>
+                                <li>درخواست نگاری کا طریقہ کار بیان کریں۔</li>
+                                <li>اردو ادب کے اہم ادوار بیان کریں۔</li>
+                                <li>اردو زبان کے مشہور ادبا کے نام اور خدمات بیان کریں۔</li>
+                                <li>اردو زبان کی ترقی میں حائل رکاوٹوں پر روشنی ڈالیں۔</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 
-                <div class="papers-note scroll-reveal">
+                <!-- Notice -->
+                <div class="syllabus-note scroll-reveal">
                     <div class="note-icon">
                         <i class="fas fa-info-circle"></i>
                     </div>
-                    <p><strong>Note:</strong> Click the "Download Past Papers" button to view and download the PDF. Each subject contains complete past papers from 2019 to 2022 in a single PDF file.</p>
+                    <p><strong>Note:</strong> All 20 questions are visible by default. Each subject card shows complete important questions for Class 9 exams.</p>
                 </div>
             </div>
         </section>
@@ -1363,8 +1202,11 @@
                 // Initialize scroll reveal
                 initScrollReveal();
                 
-                // Animate paper cards
-                animatePaperCards();
+                // Animate subject cards
+                animateSubjectCards();
+                
+                // Animate questions
+                animateQuestions();
             }, 1500);
         });
 
@@ -1400,7 +1242,7 @@
             const particlesContainer = document.getElementById('particles');
             const colors = ['#3498db', '#e74c3c', '#27ae60', '#f39c12', '#9b59b6'];
             
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
@@ -1457,192 +1299,36 @@
             });
         }
 
-        // Animate paper cards
-        function animatePaperCards() {
-            const paperCards = document.querySelectorAll('.paper-card');
-            paperCards.forEach((card, index) => {
+        // Animate subject cards
+        function animateSubjectCards() {
+            const subjectCards = document.querySelectorAll('.subject-card');
+            subjectCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
                 }, 500 + (index * 100));
             });
         }
 
-        // Open PDF Preview
-        function openPDFPreview(subject) {
-            const pdfPreview = document.getElementById('pdfPreview');
-            const pdfTitle = document.getElementById('pdfTitle');
-            
-            pdfTitle.textContent = subject;
-            pdfPreview.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Add animation to preview
-            pdfPreview.style.animation = 'fadeIn 0.3s ease';
-        }
-
-        // Close PDF Preview
-        function closePDFPreview() {
-            const pdfPreview = document.getElementById('pdfPreview');
-            pdfPreview.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Download PDF function
-        function downloadPDF() {
-            // Show download animation
-            const downloadBtn = document.querySelector('.pdf-download-btn');
-            const originalText = downloadBtn.innerHTML;
-            
-            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
-            downloadBtn.disabled = true;
-            
-            // Simulate download process
-            setTimeout(() => {
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.innerHTML = `
-                    <div style="
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: linear-gradient(135deg, #27ae60, #229954);
-                        color: white;
-                        padding: 40px;
-                        border-radius: 25px;
-                        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-                        z-index: 3000;
-                        text-align: center;
-                        max-width: 500px;
-                        width: 90%;
-                        animation: fadeIn 0.5s ease;
-                    ">
-                        <i class="fas fa-check-circle" style="font-size: 5rem; margin-bottom: 25px; animation: bounce 1s ease;"></i>
-                        <h3 style="font-size: 2rem; margin-bottom: 15px;">Download Complete!</h3>
-                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.9;">
-                            Past papers PDF has been downloaded successfully. Check your downloads folder.
-                        </p>
-                        <button onclick="this.parentElement.parentElement.remove()" style="
-                            margin-top: 30px;
-                            background: white;
-                            color: #27ae60;
-                            border: none;
-                            padding: 15px 40px;
-                            border-radius: 50px;
-                            font-weight: bold;
-                            font-size: 1.1rem;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                        ">
-                            <i class="fas fa-check"></i> Got it!
-                        </button>
-                    </div>
-                    <div style="
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0,0,0,0.7);
-                        z-index: 2999;
-                        animation: fadeIn 0.5s ease;
-                    " onclick="this.parentElement.remove()"></div>
-                `;
-                document.body.appendChild(successMsg);
-                
-                // Reset button
-                downloadBtn.innerHTML = originalText;
-                downloadBtn.disabled = false;
-                
-                // Close success message after 3 seconds
+        // Animate questions
+        function animateQuestions() {
+            const questionsLists = document.querySelectorAll('.questions-list');
+            questionsLists.forEach((list, index) => {
                 setTimeout(() => {
-                    successMsg.remove();
-                }, 3000);
+                    list.style.opacity = '1';
+                }, 1000 + (index * 200));
                 
-                // Close preview after download
-                setTimeout(() => {
-                    closePDFPreview();
-                }, 1500);
-                
-            }, 2000);
+                const questions = list.querySelectorAll('li');
+                questions.forEach((question, qIndex) => {
+                    setTimeout(() => {
+                        question.style.opacity = '1';
+                        question.style.transform = 'translateY(0)';
+                    }, 1200 + (index * 200) + (qIndex * 50));
+                });
+            });
         }
 
-        // View PDF function
-        function viewPDF() {
-            // Simulate opening PDF in new tab
-            const viewBtn = document.querySelector('.pdf-view-btn');
-            const originalText = viewBtn.innerHTML;
-            
-            viewBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
-            viewBtn.disabled = true;
-            
-            setTimeout(() => {
-                // Show viewing message
-                const viewMsg = document.createElement('div');
-                viewMsg.innerHTML = `
-                    <div style="
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: linear-gradient(135deg, #3498db, #2980b9);
-                        color: white;
-                        padding: 40px;
-                        border-radius: 25px;
-                        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-                        z-index: 3000;
-                        text-align: center;
-                        max-width: 500px;
-                        width: 90%;
-                        animation: fadeIn 0.5s ease;
-                    ">
-                        <i class="fas fa-external-link-alt" style="font-size: 5rem; margin-bottom: 25px; animation: float 2s ease-in-out infinite;"></i>
-                        <h3 style="font-size: 2rem; margin-bottom: 15px;">PDF Opened!</h3>
-                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.9;">
-                            Past papers PDF is now open in a new tab. You can view it directly in your browser.
-                        </p>
-                        <button onclick="this.parentElement.parentElement.remove()" style="
-                            margin-top: 30px;
-                            background: white;
-                            color: #3498db;
-                            border: none;
-                            padding: 15px 40px;
-                            border-radius: 50px;
-                            font-weight: bold;
-                            font-size: 1.1rem;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                        ">
-                            <i class="fas fa-check"></i> Continue
-                        </button>
-                    </div>
-                    <div style="
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0,0,0,0.7);
-                        z-index: 2999;
-                        animation: fadeIn 0.5s ease;
-                    " onclick="this.parentElement.remove()"></div>
-                `;
-                document.body.appendChild(viewMsg);
-                
-                // Reset button
-                viewBtn.innerHTML = originalText;
-                viewBtn.disabled = false;
-                
-                // Close message after 3 seconds
-                setTimeout(() => {
-                    viewMsg.remove();
-                }, 3000);
-                
-            }, 1500);
-        }
-
-        // Paper card hover effects
-        document.querySelectorAll('.paper-card').forEach(card => {
+        // Subject card hover effects
+        document.querySelectorAll('.subject-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.animation = 'pulse 0.5s ease';
             });
@@ -1653,7 +1339,7 @@
         });
 
         // Add ripple effect to buttons
-        document.querySelectorAll('.nav-link, .back-btn, .pdf-main-btn, .paper-card').forEach(button => {
+        document.querySelectorAll('.nav-link, .back-btn, .subject-card').forEach(button => {
             button.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
@@ -1698,10 +1384,10 @@
         // Parallax effect on scroll
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const papersSection = document.querySelector('.papers-section');
+            const syllabusSection = document.querySelector('.syllabus-section');
             
-            if (papersSection) {
-                papersSection.style.backgroundPositionY = `${scrolled * 0.3}px`;
+            if (syllabusSection) {
+                syllabusSection.style.backgroundPositionY = `${scrolled * 0.3}px`;
             }
         });
 
@@ -1722,18 +1408,15 @@
         // Start typing animation after loading
         setTimeout(typeWriter, 1800);
 
-        // Close preview when clicking outside
-        document.getElementById('pdfPreview').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closePDFPreview();
-            }
-        });
-
-        // Escape key to close preview
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closePDFPreview();
-            }
+        // Question hover effect
+        document.querySelectorAll('.questions-list li').forEach(question => {
+            question.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px)';
+            });
+            
+            question.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
         });
     </script>
 </body>
